@@ -2,7 +2,7 @@ from keras.models import load_model
 from numpy.random import randint
 from matplotlib import pyplot
 from numpy import vstack
-from train import loa
+from train import load_real_samples
 model = load_model('models/model_109600.h5')
 
 # plot source, generated and target images
