@@ -1,9 +1,20 @@
 from keras.models import load_model
 from numpy.random import randint
+from numpy import load
 from matplotlib import pyplot
 from numpy import vstack
-from train import loa
+# from train import load_real_samples
 model = load_model('models/model_109600.h5')
+
+def load_real_samples(filename):
+	# load compressed arrays
+	data = load(filename)
+	# unpack arrays
+	X1, X2 = data['arr_0'], data['arr_1']
+	# scale from [0,255] to [-1,1]
+	X1 = (X1 - 127.5) / 127.5
+	X2 = (X2 - 127.5) / 127.5
+	return [X1, X2]
 
 # plot source, generated and target images
 def plot_images(src_img, gen_img, tar_img):
